@@ -1,3 +1,4 @@
+import java.util.Calendar;
 
 public class Driver {
 
@@ -16,6 +17,11 @@ public class Driver {
 		System.out.println(d.validate(test3));
 		System.out.println(d.validate(test4));
 		System.out.println(d.validate(test5));
+		
+		System.out.println("\nFriday Tests:");
+		//Months for Calendar start at 0
+		System.out.println(d.has_friday_13(9, 2022));
+		System.out.println(d.has_friday_13(4, 2022));
 
 	}
 	
@@ -27,6 +33,19 @@ public class Driver {
 			return false;
 		}
 		return true;
+	}
+	
+	public  boolean has_friday_13(int m, int y) {
+		Calendar c = Calendar.getInstance();
+		
+		//Sets Calendar instance to give month and year on the 13th.
+		c.set(y, m, 13);
+		
+		//If the DAY_OF_WEEK == 6, then the 13th is on a Friday.
+		if(c.get(c.DAY_OF_WEEK)== 6) {
+			return true;
+		}
+		return false;
 	}
 
 }
