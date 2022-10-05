@@ -9,6 +9,7 @@ public class Driver {
 		String test3 = "0n3";
 		String test4 = "0";
 		String test5 = "0123456";
+		String test6 = "";
 		
 		Driver d = new Driver();
 		
@@ -17,6 +18,7 @@ public class Driver {
 		System.out.println(d.validate(test3));
 		System.out.println(d.validate(test4));
 		System.out.println(d.validate(test5));
+		System.out.println(d.validate(test6));
 		
 		System.out.println("\nFriday Tests:");
 		//Months for Calendar start at 0
