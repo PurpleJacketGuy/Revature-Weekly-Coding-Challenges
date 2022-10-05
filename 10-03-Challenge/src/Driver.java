@@ -1,4 +1,6 @@
 import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Driver {
 
@@ -6,7 +8,7 @@ public class Driver {
 		// TODO Auto-generated method stub
 		String test1 = "0123";
 		String test2 = " 0123";
-		String test3 = "0n3";
+		String test3 = "abcd";
 		String test4 = "0";
 		String test5 = "0123456";
 		String test6 = "";
@@ -20,32 +22,40 @@ public class Driver {
 		System.out.println(d.validate(test5));
 		System.out.println(d.validate(test6));
 		
-		System.out.println("\nFriday Tests:");
-		//Months for Calendar start at 0
-		System.out.println(d.has_friday_13(9, 2022));
-		System.out.println(d.has_friday_13(4, 2022));
+		System.out.println("\nFactorial Tests:");
+		System.out.println(d.isFactorial(24));
+		System.out.println(d.isFactorial(3));
 
 	}
 	
 	public boolean validate(String s) {
+		
 		if(s.length() > 6 || s.length() < 4) {
 			return false;
 		}
-		if(s.contains("^[0-9]") || s.contains(" ")) {
+		if(s.contains(" ")) {
 			return false;
+		}
+		
+		//Checks to see if the String has any instance of lowercase characters.
+		for(int i = 97; i < 123; i++) {
+			char c = (char)i;
+			if(s.indexOf(c) > -1) {
+				return false;
+			}
 		}
 		return true;
 	}
 	
-	public  boolean has_friday_13(int m, int y) {
-		Calendar c = Calendar.getInstance();
+	public boolean isFactorial(int n) {
+		int factorial = 1;
 		
-		//Sets Calendar instance to give month and year on the 13th.
-		c.set(y, m, 13);
-		
-		//If the DAY_OF_WEEK == 6, then the 13th is on a Friday.
-		if(c.get(c.DAY_OF_WEEK)== 6) {
-			return true;
+		for(int i = 1; factorial <= n; i++) {
+			factorial = factorial * (i+1);
+			
+			if(factorial == n) {
+				return true;
+			}
 		}
 		return false;
 	}
